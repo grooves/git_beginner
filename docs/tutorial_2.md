@@ -16,7 +16,7 @@ $ ls -a
 . ..  .git
 ```
 
-`.git/` という隠しディレクトリに履歴が保存されます。
+`.git/` という隠しディレクトリがリポジトリになります。このディレクトリに履歴が保存されます。
 
 ## "Hello, World" を表示するプログラム
 
@@ -26,7 +26,7 @@ $ ls -a
 print "Hello world"
 ```
 
-このファイルをバージョン管理してみます。まずは `git status` を実行してください。
+このファイルをバージョン管理してみましょう。まずは `git status` を実行してください。
 
 ```sh
 $ git status
@@ -42,7 +42,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-バージョン管理していないファイルが表示されているので、ヘルプに従って `git add` を実行します。
+バージョン管理していないので `Untracked files` に表示されています。ヘルプに従い `git add` を実行します。
 
 ```sh
 $ git add hello.py
@@ -59,7 +59,7 @@ Changes to be committed:
 無事にインデックスに登録されました。次に `git commit` でコミットしましょう。
 
 ```sh
-$ git commit -m "Hello Git World"                                                                                                     ✚
+$ git commit -m "Hello Git World"
 [master (root-commit) 53aab76] Hello Git World
  1 file changed, 1 insertion(+)
  create mode 100644 hello.py
@@ -81,7 +81,7 @@ Date:   Wed Dec 21 17:57:52 2016 +0900
 
 ## プログラムを更新する
 
-先ほど作成したプログラムにカウントダウンしてから "Hello, World" を表示するように機能を変更を加えてみましょう。
+先ほど作成したプログラムにカウントダウンする処理を追加します。
 
 ```python
 for n in range(3, 0, -1):
@@ -145,3 +145,89 @@ Date:   Wed Dec 21 17:57:52 2016 +0900
 ```
 
 ログを見ると分かるように、新しいコミットが上に表示されます。
+
+## ブランチを作成して、変更してみる
+
+`git branch` コマンドでブランチを作成することができます。
+
+```sh
+$ git branch new_feature
+$ git branch
+* master
+  new_feature
+```
+
+`git checkout` コマンドでブランチを切り替えることができます。
+
+```sh
+$ git checkout new_feature
+$ git branch
+  master
+* new_feature
+```
+
+では、ファイルに簡単な変更を加えてみましょう。(感嘆符を追加しました)
+
+```python
+for n in range(3, 0, -1):
+    print n
+
+print "Hello world!!"
+```
+
+この変更をコミットしましょう。
+
+```sh
+$ git add hello.py
+$ git commit -m "Change message"
+```
+
+今回はログを表示するときに `--graph --decorate` のオプションを追加します。
+
+```sh
+$ git log --graph --decorate
+* commit f0de65ea07fd227a97dbb910c650e76741ce5860 (HEAD -> new_feature)
+| Author: sinsoku <sinsoku.listy@gmail.com>
+| Date:   Wed Dec 21 19:03:41 2016 +0900
+|
+|     Change message
+|
+* commit a7e5b767b0bb6a31d9bec2cbc71c980a3ebdc778 (master)
+| Author: sinsoku <sinsoku.listy@gmail.com>
+| Date:   Wed Dec 21 18:10:42 2016 +0900
+|
+|     Add countdown
+|
+* commit 53aab7648d48ba6f3004db1159ece77cc7cbc295
+  Author: sinsoku <sinsoku.listy@gmail.com>
+  Date:   Wed Dec 21 17:57:52 2016 +0900
+
+      Hello Git World
+```
+
+ブランチの位置が2つあるのが分かります。
+
+## 元のブランチに切り替える
+
+元の `master` ブランチに切り替えてみましょう。
+
+```sh
+$ git checkout master
+Switched to branch 'master'
+```
+
+`hello.py` のファイルが元に戻ります。
+
+## ブランチをマージする
+
+`new_feature` ブランチで変更した内容を `master` ブランチに統合(マージ)してみます。
+
+```sh
+$ git merge new_feature
+Updating a7e5b76..f0de65e
+Fast-forward
+ hello.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+`hello.py` に `new_feature` 変更が反映されました。
