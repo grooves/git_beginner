@@ -16,6 +16,14 @@ Git の初期設定を行います。これらの設定は `~/.gitconfig` に保
 
 ### ユーザー情報
 
+現在の Git の設定を確認します。
+
+```sh
+git config -l
+```
+
+設定を行います。
+
 ```sh
 $ git config --global user.name "<user_name>"
 $ git config --global user.email "<email>"
