@@ -46,6 +46,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ```sh
 $ git add hello.py
+$ git status
 On branch master
 
 Initial commit
