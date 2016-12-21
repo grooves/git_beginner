@@ -2,15 +2,15 @@
 
 https://github.com/grooves/git_beginner のリポジトリを Fork します。
 
-![](https://raw.github.com/sinsoku/git_beginner/master/images/fork.png)
+![](https://raw.githubusercontent.com/grooves/git_beginner/master/images/fork.png)
 
 少し待つと `<user_name>/git_beginner` のリポジトリが作成されます。
 
 ## リポジトリを clone する
 
-自分のリポジトリを `git clone` してみましょう。リポジトリのURLは下記の画像を参考に、コピーします。
+自分のリポジトリを `git clone` してみましょう。リポジトリのURLは下記の画像の箇所に表示されます。
 
-![](https://raw.github.com/sinsoku/git_beginner/master/images/clone.png)
+![](https://raw.githubusercontent.com/grooves/git_beginner/master/images/clone.png)
 
 `git clone <URL>` を実行します。
 
