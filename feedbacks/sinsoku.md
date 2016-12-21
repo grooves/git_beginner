@@ -1,2 +1,3 @@
+#Sorry for written by English because japanese can't be encoded correctly.  
 #At first, I feel it difficlut, but finally, I can control it well. Thank you For teaching.
 #I hope you'll teach advanced lesson for Git...
