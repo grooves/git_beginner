@@ -34,17 +34,17 @@ $ git checkout -b feedback
 Switched to a new branch 'feedback'
 ```
 
-次にアンケートを記入してコミットします。
+次にテンプレートをコピーして、GitHubのユーザー名と同じファイルを作成して下さい。
 
 ```sh
-$ cp feedbacks/_template.md feedbacks/sinsoku.md
-$ vi feedbacks/sinsoku.md
+$ cp feedbacks/_template.md feedbacks/<user_name>.md
+$ vi feedbacks/<user_name>.md
 # アンケートを記入する
-$ git add feedbacks/sinsoku.md
+$ git add feedbacks/<user_name>.md
 $ git commit -m "Add feedback"
 [feedback 666e341] Add feedback
  1 file changed, 9 insertions(+)
- create mode 100644 feedbacks/sinsoku.md
+ create mode 100644 feedbacks/<user_name>.md
 ```
 
 ## 変更を GitHub のリポジトリに反映する
